@@ -2,7 +2,6 @@ package pageObjects.mobile;
 
 import coreFunctions.CoreFunctions;
 import org.openqa.selenium.By;
-
 import java.util.List;
 
 public class ReporterMobilePage {
@@ -19,7 +18,6 @@ public class ReporterMobilePage {
 
     public List<String> getNewsList() {
         core.openWebPage(PAGE);
-        List<String> data = core.getNewsAttributes(NEWS, A1, A2);
-        return data;
+        return core.getNewsAttributes(NEWS, A1, A2);
     }
 }

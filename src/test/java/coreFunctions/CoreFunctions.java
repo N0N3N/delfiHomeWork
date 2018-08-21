@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,13 +55,12 @@ public class CoreFunctions {
                 state = false;
             }
         }
-        Assert.assertTrue("News are different", state == true);
+        Assert.assertTrue("News are different", state);
     }
 
 
-    public List<WebElement> getNewsElements(By news) {
-        List<WebElement> newsElements = driver.findElements(news);
-        return newsElements;
+    private List<WebElement> getNewsElements(By news) {
+        return driver.findElements(news);
     }
 
     public List<String> getNewsAttributes(By news, By a1, By a2) {
@@ -79,7 +77,5 @@ public class CoreFunctions {
         }
 
         return data;
-
     }
-
 }
