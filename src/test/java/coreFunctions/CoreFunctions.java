@@ -7,19 +7,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class CoreFunctions {
     private WebDriver driver;
-    private static final String CHROME_DRIVER_LOCATION = "C://driver/chromedriver.exe";
+    private static final String CHROME_DRIVER_LOCATION = "C:/driver/chromedriver.exe";
     private static final Logger LOGGER = LogManager.getLogger(CoreFunctions.class);
-    private boolean state = true;
 
     public CoreFunctions() {
         System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_LOCATION);
         this.driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     public void openWebPage(String url) {
@@ -34,55 +34,51 @@ public class CoreFunctions {
         driver.close();
     }
 
-
-    public void checkNews(String[][] deskSum, String[][] mobSum) {
+    public void checkNews(List<String> desktopData, List<String> mobileData) {
         LOGGER.info("Checking news from Mob. and Desk. versions");
-        System.out.println(" ");
+
+        boolean state = true;
         for (int i = 0; i < 3; i++) {
-            System.out.println("Nr." + i + "  " + deskSum[0][i] + " " + deskSum[1][i] + " VS " + mobSum[0][i] + " " + mobSum[1][i]);
-            if (deskSum[0][i].contains(mobSum[0][i])) {
-                System.out.print("Same Name      ");
-            } else{
-                System.out.print("Different Name     ");
+            LOGGER.info("Nr." + i + 1 + "  " + desktopData.get(i*2) + " " + desktopData.get(i*2+1) + " VS " + mobileData.get(i*2) + " " + mobileData.get(i*2+1));
+            if (desktopData.get(i*2).contains(mobileData.get(i*2))) {
+                LOGGER.info("Same Name      ");
+            } else {
+                LOGGER.info("Different Name     ");
                 state = false;
             }
 
-            if (deskSum[1][i].contains(mobSum[1][i])) {
-                System.out.println("Same Comment count");
+            if (desktopData.get(i*2+1).contains(mobileData.get(i*2+1))) {
+                LOGGER.info("Same Comment count");
+                LOGGER.info(" ");
             } else {
-                System.out.println("Different Comment count");
+                LOGGER.info("Different Comment count");
+                LOGGER.info(" ");
                 state = false;
-                System.out.println(" ");
             }
         }
-        if (!state){
-            Assert.assertTrue("News are different", state=true);
-        }
+        Assert.assertTrue("News are different", state == true);
     }
 
 
-    public List<WebElement> getNewsElements(By NEWS) {
-        List<WebElement> newsElements = driver.findElements(NEWS);
+    public List<WebElement> getNewsElements(By news) {
+        List<WebElement> newsElements = driver.findElements(news);
         return newsElements;
     }
 
-
-    public String[][] getNewsAttributes(By NEWS, By a1, By a2) {
-        String[][] sum = {{"", "", ""}, {"", "", ""}};
+    public List<String> getNewsAttributes(By news, By a1, By a2) {
+        List<String> data = new ArrayList<String>();
         LOGGER.info("Getting list of news:");
         for (int i = 0; i < 3; i++) {
-            Assert.assertTrue("No News found", !getNewsElements(NEWS).get(i).findElements(a1).isEmpty());
-            sum[0][i] = getNewsElements(NEWS).get(i).findElement(a1).getText();
-            System.out.print(i + " " + sum[0][i]);
+            Assert.assertTrue("No News found", !getNewsElements(news).get(i).findElements(a1).isEmpty());
+            data.add(i*2, getNewsElements(news).get(i).findElement(a1).getText());
 
-            if (getNewsElements(NEWS).get(i).findElements(a2).isEmpty()) {
-                sum[1][i] = "0";
+            if (getNewsElements(news).get(i).findElements(a2).isEmpty()) {
+                data.add(i*2+1, "0");
             } else
-                sum[1][i] = getNewsElements(NEWS).get(i).findElement(a2).getText();
-            System.out.println(" " + sum[1][i]);
+                data.add(i*2+1, getNewsElements(news).get(i).findElement(a2).getText());
         }
 
-        return sum;
+        return data;
 
     }
 
