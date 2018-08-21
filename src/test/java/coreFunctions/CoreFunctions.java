@@ -34,7 +34,8 @@ public class CoreFunctions {
     }
 
     public void checkNews(List<String> desktopData, List<String> mobileData) {
-        LOGGER.info("Checking news from Mob. and Desk. versions");
+        LOGGER.info("Checking news from Desktop and Mobile versions");
+        System.out.println();
 
         boolean state = true;
         for (int i = 0; i < 3; i++) {
@@ -48,16 +49,15 @@ public class CoreFunctions {
 
             if (desktopData.get(i*2+1).contains(mobileData.get(i*2+1))) {
                 LOGGER.info("Same Comment count");
-                LOGGER.info(" ");
+                System.out.println();
             } else {
                 LOGGER.info("Different Comment count");
-                LOGGER.info(" ");
+                System.out.println();
                 state = false;
             }
         }
         Assert.assertTrue("News are different", state);
     }
-
 
     private List<WebElement> getNewsElements(By news) {
         return driver.findElements(news);
@@ -65,7 +65,7 @@ public class CoreFunctions {
 
     public List<String> getNewsAttributes(By news, By a1, By a2) {
         List<String> data = new ArrayList<String>();
-        LOGGER.info("Getting list of news:");
+        LOGGER.info("Getting list of news");
         for (int i = 0; i < 3; i++) {
             Assert.assertTrue("No News found", !getNewsElements(news).get(i).findElements(a1).isEmpty());
             data.add(i*2, getNewsElements(news).get(i).findElement(a1).getText());

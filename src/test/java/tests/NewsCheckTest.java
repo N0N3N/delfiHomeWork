@@ -10,10 +10,8 @@ import pageObjects.mobile.ReporterMobilePage;
 
 public class NewsCheckTest {
     private CoreFunctions core = new CoreFunctions();
-
     private BusinessDesktopPage businessDesktop = new BusinessDesktopPage(core);
     private ReporterDesktopPage reporterDesktop = new ReporterDesktopPage(core);
-
     private BusinessMobilePage businessMobile = new BusinessMobilePage(core);
     private ReporterMobilePage reporterMobile = new ReporterMobilePage(core);
 

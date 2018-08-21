@@ -6,7 +6,6 @@ import java.util.List;
 
 public class BusinessMobilePage {
     private CoreFunctions core;
-
     private static final By NEWS = By.xpath("//div[@class = 'md-mosaic']/div/div");
     private static final By A1 = By.xpath("./a[1]");
     private static final By A2 = By.xpath("./a[2]");

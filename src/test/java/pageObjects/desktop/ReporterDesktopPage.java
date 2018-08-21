@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ReporterDesktopPage {
     private CoreFunctions core;
-
     private static final String PAGE = "http://www.delfi.lv/reporter/";
     private static final By NEWS = By.xpath("//h3[@class = 'top2012-title']");
     private static final By A1 = By.xpath("./a[1]");
