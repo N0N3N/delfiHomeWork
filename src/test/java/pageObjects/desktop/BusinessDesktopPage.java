@@ -15,8 +15,10 @@ public class BusinessDesktopPage {
         this.core = cf;
     }
 
-    public List<String> getNewsList(){
+    public void openWebPage() {
         core.openWebPage(PAGE);
+    }
+    public List<String> getNewsList(){
         return core.getNewsAttributes(NEWS, A1, A2);
     }
 }

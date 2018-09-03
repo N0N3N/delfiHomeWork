@@ -33,33 +33,7 @@ public class CoreFunctions {
         driver.close();
     }
 
-    public void checkNews(List<String> desktopData, List<String> mobileData) {
-        LOGGER.info("Checking news from Desktop and Mobile versions");
-        System.out.println();
-
-        boolean state = true;
-        for (int i = 0; i < 3; i++) {
-            LOGGER.info("Nr." + i + 1 + "  " + desktopData.get(i*2) + " " + desktopData.get(i*2+1) + " VS " + mobileData.get(i*2) + " " + mobileData.get(i*2+1));
-            if (desktopData.get(i*2).contains(mobileData.get(i*2))) {
-                LOGGER.info("Same Name      ");
-            } else {
-                LOGGER.info("Different Name     ");
-                state = false;
-            }
-
-            if (desktopData.get(i*2+1).contains(mobileData.get(i*2+1))) {
-                LOGGER.info("Same Comment count");
-                System.out.println();
-            } else {
-                LOGGER.info("Different Comment count");
-                System.out.println();
-                state = false;
-            }
-        }
-        Assert.assertTrue("News are different", state);
-    }
-
-    private List<WebElement> getNewsElements(By news) {
+    public List<WebElement> getNewsElements(By news) {
         return driver.findElements(news);
     }
 

@@ -2,6 +2,8 @@ package pageObjects.desktop;
 
 import coreFunctions.CoreFunctions;
 import org.openqa.selenium.By;
+import tests.NewsCheckTest;
+
 import java.util.List;
 
 public class ReporterDesktopPage {
@@ -15,8 +17,10 @@ public class ReporterDesktopPage {
         this.core = cf;
     }
 
-    public List<String> getNewsList(){
+    public void openWebPage() {
         core.openWebPage(PAGE);
+    }
+    public List<String> getNewsList(){
         return core.getNewsAttributes(NEWS, A1, A2);
     }
 }
