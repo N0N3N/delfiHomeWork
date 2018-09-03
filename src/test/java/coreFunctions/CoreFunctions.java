@@ -37,7 +37,7 @@ public class CoreFunctions {
         return driver.findElements(news);
     }
 
-    public List<String> getNewsAttributes(By news, By a1, By a2) {
+/*    public List<String> getNewsAttributes(By news, By a1, By a2) {
         List<String> data = new ArrayList<String>();
         LOGGER.info("Getting list of news");
         for (int i = 0; i < 3; i++) {
@@ -51,5 +51,5 @@ public class CoreFunctions {
         }
 
         return data;
-    }
+    }*/
 }
