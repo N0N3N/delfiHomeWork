@@ -24,7 +24,15 @@ public class BusinessMobilePage {
     public void openWebPage() {
         core.openWebPage(PAGE);
     }
-    public List<String> getNewsList(){
+/*    public List<String> getNewsList(){
         return helper.getNewsAttributes(NEWS, A1, A2);
+    }*/
+    public List<String> getNewsNames(){
+        return helper.getNewsNames(NEWS, A1);
     }
+
+    public List<String> getNewsCommentCount(){
+        return helper.getNewsCommentCount(NEWS, A2);
+    }
+
 }

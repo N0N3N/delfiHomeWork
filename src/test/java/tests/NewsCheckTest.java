@@ -19,8 +19,8 @@ public class NewsCheckTest {
     private ReporterMobilePage reporterMobile = new ReporterMobilePage(core, helper);
 
 
-    @Test
-    public void printFirstThreeBusinessNews(){
+/*    @Test
+    public void printBusinessNews(){
         businessDesktop.openWebPage();
         List<String> desktopNews = businessDesktop.getNewsList();
         businessMobile.openWebPage();
@@ -29,13 +29,50 @@ public class NewsCheckTest {
     }
 
     @Test
-    public void printFirstThreeReporterNews(){
+    public void printReporterNews(){
         reporterDesktop.openWebPage();
         List<String> desktopNews = reporterDesktop.getNewsList();
         reporterMobile.openWebPage();
         List<String> mobileNews = reporterMobile.getNewsList();
         helper.checkNews(desktopNews, mobileNews);
+    }*/
+
+    @Test
+    public void compareBusinessNewsNames(){
+        businessDesktop.openWebPage();
+        List<String> desktopNewsNames = businessDesktop.getNewsNames();
+        businessMobile.openWebPage();
+        List<String> mobileNewsNames = businessMobile.getNewsNames();
+        helper.compareNewsNames(desktopNewsNames, mobileNewsNames);
     }
+
+    @Test
+    public void compareBusinessNewsCommentCount(){
+        businessDesktop.openWebPage();
+        List<String> desktopNewsComments = businessDesktop.getNewsCommentCount();
+        businessMobile.openWebPage();
+        List<String> mobileNewsComments = businessMobile.getNewsCommentCount();
+        helper.compareNewsCommnetCount(desktopNewsComments, mobileNewsComments);
+    }
+
+    @Test
+    public void compareReporterNewsNames(){
+        reporterDesktop.openWebPage();
+        List<String> desktopNewsNames = reporterDesktop.getNewsNames();
+        reporterMobile.openWebPage();
+        List<String> mobileNewsNames = reporterMobile.getNewsNames();
+        helper.compareNewsNames(desktopNewsNames, mobileNewsNames);
+    }
+
+    @Test
+    public void compareReporterNewsCommentCount(){
+        reporterDesktop.openWebPage();
+        List<String> desktopNewsComments = reporterDesktop.getNewsCommentCount();
+        reporterMobile.openWebPage();
+        List<String> mobileNewsComments = reporterMobile.getNewsCommentCount();
+        helper.compareNewsCommnetCount(desktopNewsComments, mobileNewsComments);
+    }
+
 
     @After
     public void closePage(){
