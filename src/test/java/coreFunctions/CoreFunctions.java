@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoreFunctions {
@@ -33,23 +32,8 @@ public class CoreFunctions {
         driver.close();
     }
 
-    public List<WebElement> getNewsElements(By news) {
-        return driver.findElements(news);
+    public List<WebElement> getNewsElements(By path) {
+        Assert.assertTrue("No elements found", !driver.findElements(path).isEmpty());
+        return driver.findElements(path);
     }
-
-/*    public List<String> getNewsAttributes(By news, By a1, By a2) {
-        List<String> data = new ArrayList<String>();
-        LOGGER.info("Getting list of news");
-        for (int i = 0; i < 3; i++) {
-            Assert.assertTrue("No News found", !getNewsElements(news).get(i).findElements(a1).isEmpty());
-            data.add(i*2, getNewsElements(news).get(i).findElement(a1).getText());
-
-            if (getNewsElements(news).get(i).findElements(a2).isEmpty()) {
-                data.add(i*2+1, "0");
-            } else
-                data.add(i*2+1, getNewsElements(news).get(i).findElement(a2).getText());
-        }
-
-        return data;
-    }*/
 }

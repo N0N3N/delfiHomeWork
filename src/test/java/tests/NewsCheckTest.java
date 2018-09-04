@@ -18,25 +18,6 @@ public class NewsCheckTest {
     private BusinessMobilePage businessMobile = new BusinessMobilePage(core, helper);
     private ReporterMobilePage reporterMobile = new ReporterMobilePage(core, helper);
 
-
-/*    @Test
-    public void printBusinessNews(){
-        businessDesktop.openWebPage();
-        List<String> desktopNews = businessDesktop.getNewsList();
-        businessMobile.openWebPage();
-        List<String> mobileNews = businessMobile.getNewsList();
-        helper.checkNews(desktopNews, mobileNews);
-    }
-
-    @Test
-    public void printReporterNews(){
-        reporterDesktop.openWebPage();
-        List<String> desktopNews = reporterDesktop.getNewsList();
-        reporterMobile.openWebPage();
-        List<String> mobileNews = reporterMobile.getNewsList();
-        helper.checkNews(desktopNews, mobileNews);
-    }*/
-
     @Test
     public void compareBusinessNewsNames(){
         businessDesktop.openWebPage();
@@ -72,7 +53,6 @@ public class NewsCheckTest {
         List<String> mobileNewsComments = reporterMobile.getNewsCommentCount();
         helper.compareNewsCommnetCount(desktopNewsComments, mobileNewsComments);
     }
-
 
     @After
     public void closePage(){

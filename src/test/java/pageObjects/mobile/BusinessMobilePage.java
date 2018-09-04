@@ -3,8 +3,6 @@ package pageObjects.mobile;
 import attributeHelper.AttributeHelper;
 import coreFunctions.CoreFunctions;
 import org.openqa.selenium.By;
-import tests.NewsCheckTest;
-
 import java.util.List;
 
 public class BusinessMobilePage {
@@ -24,9 +22,7 @@ public class BusinessMobilePage {
     public void openWebPage() {
         core.openWebPage(PAGE);
     }
-/*    public List<String> getNewsList(){
-        return helper.getNewsAttributes(NEWS, A1, A2);
-    }*/
+
     public List<String> getNewsNames(){
         return helper.getNewsNames(NEWS, A1);
     }

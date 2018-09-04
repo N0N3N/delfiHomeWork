@@ -9,5 +9,8 @@
         <module name="delfiHomeWork" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="delfiHomeWork" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
